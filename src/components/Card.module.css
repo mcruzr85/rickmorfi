@@ -1,0 +1,32 @@
+.cardStyle{
+    background-color: rgb(193, 234, 247);
+    border-radius: 5px;
+    padding: .8rem 1.5rem;
+
+}
+
+.cardStyle:hover{
+    background-color: khaki;
+}
+
+.cardShadow{
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.borde{
+    width: 150px;
+    border: 2px solid #240909;
+}
+
+.btn{
+    background-color: blue;
+    font-weight: bold;    
+}
+
+.btn:hover{
+    cursor: pointer;
+}
+.btnContainer{
+    display: flex;
+    justify-content: end;
+}
