@@ -1,0 +1,15 @@
+.barra{
+    background-color: rgba(73, 61, 57, 0.5);  /*con rgba se le añade opacidad al color sin afectar los hijos del elemento*/
+
+    border: 1px solid rgb(163, 191, 253);
+    border-radius: 50px;
+    padding: 1rem;
+   /* opacity: .5; */ 
+    width: 90%;  
+    margin: 1.5rem auto 0.5rem auto; 
+
+    display:flex;  /* estos 3 son para ubicar la busqueda a la derecha*/
+    flex-direction: column;
+    align-items: flex-end;
+
+}

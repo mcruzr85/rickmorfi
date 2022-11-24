@@ -1,50 +1,50 @@
-import './App.css'
-import Card from './components/Card.jsx'
-import Cards from './components/Cards.jsx'
-import SearchBar from './components/SearchBar.jsx'
-import characters, { Rick } from './data.js'
+import {useState} from 'react'; 
+import Nav from "./components/Nav/Nav";
+//import Card from "./components/Card/Card.jsx";
+import Cards from "./components/Cards/Cards.jsx";
+//import SearchBar from './components/SearchBar/SearchBar.jsx'
+//
+import style from './App.module.css';
+import React from "react";
 
-function App () {
-  const divStyle = {
-    margin: '40px',
-    minWidth: '200px' ,
-    maxWidth: '200px' ,  
-  };
 
-  const center = {
-    display: 'flex',  
-    justifyContent: 'center' ,
-    
-  };
-  return (
-    <div className='App' style={{ padding: '25px' }}>
-      <div style={center}>
-      <div style={divStyle}>
-        <Card
-          name={Rick.name}
-          species={Rick.species}
-          gender={Rick.gender}
-          image={Rick.image}
-          onClose={() => window.alert('Emulamos que se cierra la card')}
-        />
-      </div>
-      </div>
+function App() {
 
-      <hr />
+ const [characters, setCharacters] = useState([]);
 
-      <div>
-        <Cards characters={characters} onClose={() => window.alert('Emulamos que se cierra la card')}/>
-      </div>
-
-      <hr />
-
-      <div>
-        <SearchBar
-          onSearch={(characterID) => window.alert(characterID)}
-        />
-      </div>
-    </div>
-  )
+ function onSearch(character) {
+   fetch(`https://rickandmortyapi.com/api/character/${character}`)
+     .then((response) => response.json())
+     .then((data) => {
+        if (data.id) {
+          setCharacters((characters) => [...characters, data]);
+         } else {
+           window.alert('No hay personajes con ese ID');
+        }
+     });
 }
 
-export default App
+function onClose(id){  
+  setCharacters(characters.filter((ch)=>ch.id !== id))
+}
+
+  return (
+    <div>
+
+      <div className={style.centrarNav}>
+        <Nav onSearch={onSearch}/>
+      </div>
+      
+      <hr />
+
+      <div>
+        <Cards
+          characters={characters}
+          onClose={onClose}          
+        />
+      </div>         
+    </div>
+  );
+}
+
+export default App;
