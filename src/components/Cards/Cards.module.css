@@ -1,9 +1,11 @@
 .cardsContainer{
 
     width: min(90%, 120rem);
-    margin: 0rem auto;
-    display: block;
-    align-items: center;
+    margin: 0 auto;
+    display: grid;
+   grid-template-columns: 1fr;
+   row-gap: 3rem;
+
     
    /* align-items: center;
     justify-content: space-around;

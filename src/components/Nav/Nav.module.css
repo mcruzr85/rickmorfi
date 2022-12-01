@@ -3,13 +3,58 @@
 
     border: 1px solid rgb(163, 191, 253);
     border-radius: 50px;
-    padding: 1rem;
-   /* opacity: .5; */ 
-    width: 90%;  
-    margin: 1.5rem auto 0.5rem auto; 
-
-    display:flex;  /* estos 3 son para ubicar la busqueda a la derecha*/
-    flex-direction: column;
-    align-items: flex-end;
-
+    padding: 1rem;    
+    margin: 1.5rem auto 0.5rem auto;   
+    width: min(90%, 120rem);
 }
+
+.active {
+    color: #917ae2;
+    text-decoration: overline;
+    font-weight: bold;
+    text-decoration:underline    
+    }
+
+.display{
+    display: block;
+    text-align: center;
+    padding: 1rem 0;    
+}
+
+.margin{
+    margin-left: 6rem;
+}
+
+.cardsContainer{
+    width: min(90%, 120rem);
+    margin: 0rem auto;
+    display: block;
+    align-items: center;
+    
+   /* align-items: center;
+    justify-content: space-around;
+    width: 90%;
+    margin: 0 auto;        
+ */
+}
+
+@media (min-width: 768px) {
+    .display{
+        display: inline-block;
+    }
+    .barra {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 2rem;
+    }      
+}
+
+
+@media (min-width: 1200px) {
+    .barra {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 2rem;      
+    }
+}
+

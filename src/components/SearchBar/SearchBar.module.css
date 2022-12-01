@@ -5,16 +5,15 @@ input {
   border: 1px solid rgb(163, 191, 253);
   color: white;
   font-size: 1.5rem;
-  text-transform: uppercase;
-  width: 140px;
-  padding-left: 3rem;
-  
+  text-transform: uppercase;   
+  height: 3rem; 
 }
 
-.grid{
-  display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr;
-  gap: .5rem;
+.display{
+  display:block;
+  min-width: 90%;
+  margin: 1rem; 
+  margin-left: 2.3rem;
 }
 
 .btnModerno{
@@ -36,3 +35,22 @@ input {
   border-left: 10px solid #f892df;
   box-shadow: 1px 1px 20px -4px #ffffff70; 
 }
+
+
+@media (min-width: 600px) {
+
+  input{
+    display: inline-block;
+  }
+
+  .btnModerno{
+    display: inline-block;
+  }
+  .container{
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: .5rem;
+  }     
+}
+
+

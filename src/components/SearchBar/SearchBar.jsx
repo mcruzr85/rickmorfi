@@ -17,14 +17,14 @@ export default function SearchBar({ onSearch }) {
   };
 
   return (
-    <div className={styles.grid}>
+    <div className={styles.container}>
       <input
-        className={styles.input}
+        className={`${styles.input} ${styles.display}`}
         type="search"
         onChange={handleCharacterName}
       />
       <button
-        className={styles.btnModerno}
+        className={`${styles.btnModerno} ${styles.display}`}
         onClick={(e) => {
           onSearch(characterId);
         }}
@@ -32,7 +32,7 @@ export default function SearchBar({ onSearch }) {
         Add
       </button>
       <button
-        className={styles.btnModerno}
+        className={`${styles.btnModerno} ${styles.display}`}
         onClick={(e) => {
           onSearch(randomX());
         }}
