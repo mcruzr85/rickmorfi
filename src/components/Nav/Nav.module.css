@@ -1,60 +1,51 @@
-.barra{
-    background-color: rgba(73, 61, 57, 0.5);  /*con rgba se le añade opacidad al color sin afectar los hijos del elemento*/
-
-    border: 1px solid rgb(163, 191, 253);
-    border-radius: 50px;
-    padding: 1rem;    
-    margin: 1.5rem auto 0.5rem auto;   
-    width: min(90%, 120rem);
+.barra {
+  background-color: rgba( 73, 61, 57, 0.5); /*con rgba se le añade opacidad al color sin afectar los hijos del elemento*/
+  border: 1px solid rgb(163, 191, 253);
+  border-radius: 50px;
+  padding: 1rem;
+  margin: 1.5rem auto 0.5rem auto;
+  width: min(90%, 120rem);
 }
 
-.active {
-    color: #917ae2;
-    text-decoration: overline;
-    font-weight: bold;
-    text-decoration:underline    
-    }
-
-.display{
-    display: block;
-    text-align: center;
-    padding: 1rem 0;    
+.activeStyle {
+  color: #f892df;
+  font-weight: bold;
+  text-decoration: none;
+  text-decoration: underline;
+}
+.nonActiveStyle {
+  color: #917ae2;
+  font-weight: bold;
+  text-decoration: none;
 }
 
-.margin{
-    margin-left: 6rem;
+.display {
+  display: block;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: large;
 }
 
-.cardsContainer{
-    width: min(90%, 120rem);
-    margin: 0rem auto;
-    display: block;
+@media (min-width: 600px) {
+  .display {
+    display: inline-block;
+    font-size: xx-large;
+    margin-left: 7rem;
+  }
+  .barra {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
     align-items: center;
+  }
+}
+
+
+@media (min-width: 1000px) {
+ 
+  .barra {
     
-   /* align-items: center;
-    justify-content: space-around;
-    width: 90%;
-    margin: 0 auto;        
- */
+    grid-template-columns: 1fr 1fr;
+   
+  }
 }
-
-@media (min-width: 768px) {
-    .display{
-        display: inline-block;
-    }
-    .barra {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        column-gap: 2rem;
-    }      
-}
-
-
-@media (min-width: 1200px) {
-    .barra {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        column-gap: 2rem;      
-    }
-}
-

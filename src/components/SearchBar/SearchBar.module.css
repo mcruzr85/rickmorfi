@@ -1,19 +1,13 @@
 
-input {
+.inputType {
   background-color: #232323;
   border-radius: 50px;
   border: 1px solid rgb(163, 191, 253);
   color: white;
   font-size: 1.5rem;
   text-transform: uppercase;   
-  height: 3rem; 
-}
-
-.display{
-  display:block;
-  min-width: 90%;
-  margin: 1rem; 
-  margin-left: 2.3rem;
+  height: 4rem; 
+  padding-left: 5rem;  
 }
 
 .btnModerno{
@@ -30,27 +24,50 @@ input {
   cursor: pointer;
   border: 1px solid #7144db;
   border-left: 10px solid #7144db;
+ 
 }
 .btnModerno:hover{
   border-left: 10px solid #f892df;
   box-shadow: 1px 1px 20px -4px #ffffff70; 
 }
 
+.display{
+  display:block;
+  min-width: 90%;
+  margin: 1rem; 
+  margin-left: 2.3rem;
+}
+
 
 @media (min-width: 600px) {
-
   input{
-    display: inline-block;
+    display: inline-block;    
+   
   }
-
   .btnModerno{
     display: inline-block;
+    min-width: 100px;    
   }
   .container{
     display: grid;
     grid-template-columns: 1.2fr 1fr 1fr;
     gap: .5rem;
-  }     
+  } 
+  .display{
+    margin-left: 0    
+  }    
+}
+
+
+@media (min-width: 1200px) {
+  .container{
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: .2rem;
+  } 
+  .display{
+    margin-left: 0
+  }    
 }
 
 

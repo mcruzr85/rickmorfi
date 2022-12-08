@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./SearchBar.module.css";
 
 export default function SearchBar({ onSearch }) {
@@ -13,32 +14,39 @@ export default function SearchBar({ onSearch }) {
     if (num > 826) {
       num = num / 10;
       return Math.ceil(num);
-    } else return num;   
+    } else return num;
   };
 
   return (
     <div className={styles.container}>
       <input
-        className={`${styles.input} ${styles.display}`}
+        className={`${styles.inputType} ${styles.display}`}
         type="search"
         onChange={handleCharacterName}
+        placeholder="Insert the card Id you want to search..."
       />
-      <button
-        className={`${styles.btnModerno} ${styles.display}`}
-        onClick={(e) => {
-          onSearch(characterId);
-        }}
-      >
-        Add
-      </button>
-      <button
-        className={`${styles.btnModerno} ${styles.display}`}
-        onClick={(e) => {
-          onSearch(randomX());
-        }}
-      >
-        Random
-      </button>
+      <Link to="/">
+        <button
+          className={`${styles.btnModerno} ${styles.display}`}
+          onClick={(e) => {
+            onSearch(characterId);
+          }}
+        >
+          Add
+        </button>
+      </Link>
+
+      <Link to="/">
+        <button
+          className={`${styles.btnModerno} ${styles.display}`}
+          onClick={(e) => {
+            onSearch(randomX());
+          }}
+        >
+          Random
+        </button>
+      </Link>
     </div>
   );
 }
+

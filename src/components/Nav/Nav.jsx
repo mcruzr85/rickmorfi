@@ -6,7 +6,7 @@ import SearchBar from "../SearchBar/SearchBar";
 //<NavLink to="about" className={({isActive})=> isActive ? 'active' : ''}>
 const Nav = ({ onSearch }) => {
 
-  let activeStyle = {
+  /**let activeStyle = {
     color: "#f892df",
     fontWeight: "bold",
     textDecoration:"underline",
@@ -17,19 +17,32 @@ const Nav = ({ onSearch }) => {
     fontWeight: "bold",
     textDecoration: "none"
 
-  };
+    <NavLink
+            to="messages"
+            style={({ isActive }) =>
+              isActive ? activeStyle : nonActiveStyle
+            }
+          >
+            Messages
+          </NavLink>
+
+  }; */
+
+
 
   return (
     <div className={style.barra}>
       <nav>
       <div className={style.display}>   
         
-        <NavLink  to="home"  style={({ isActive }) => isActive ? activeStyle : nonActiveStyle }>
+        <NavLink  to=""  className={({ isActive }) => isActive ? style.activeStyle : style.nonActiveStyle
+            }>
           HOME
-          </NavLink></div>
+          </NavLink></div>          
 
       <div className={style.display}>
-      <NavLink  to="about"  style={({ isActive }) => isActive ? activeStyle : nonActiveStyle }>
+      <NavLink  to="about"  className={({ isActive }) => isActive ? style.activeStyle : style.nonActiveStyle
+            }>
          ABOUT
         </NavLink>
       </div>

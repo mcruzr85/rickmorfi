@@ -1,14 +1,50 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Nav from "./components/Nav/Nav";
 import Cards from "./components/Cards/Cards.jsx";
 import About from "./components/About/About";
+import Error from "./components/Error/Error";
 import Detail from "./components/Detail/Detail";
 import style from "./App.module.css";
+import Logins from "./components/Logins/Logins";
 
 function App() {
   const [characters, setCharacters] = useState([]);
+  const [access, setAccess] = useState(false);
+
+  const username = "meybis@gmail.com";
+  const password = "hola12345";
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  
+
+  /* useEffect(() => {
+    // Google Analytics
+   // ga('send', 'pageview');
+  }, [location]);*/
+
+  function login(userData) {
+    if (userData.user === username && userData.password === password) {
+      setAccess(true);
+      navigate("/home");
+    } else {
+      return window.alert("Incorrect username or password");
+    }
+  }
+
+  function LogOut() {
+    setAccess(false);
+    navigate('/');
+  }
+
+  useEffect(() => {
+    (access === false) && navigate("/");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [access, navigate]);
 
   function onSearch(character) {
     fetch(`https://rickandmortyapi.com/api/character/${character}`)
@@ -17,31 +53,35 @@ function App() {
         if (data.id) {
           setCharacters((characters) => [...characters, data]);
         } else {
-          window.alert("No hay personajes con ese ID");
+          window.alert("Invalid ID");
         }
       });
+    navigate("/home");
   }
 
   function onClose(id) {
     setCharacters(characters.filter((ch) => ch.id !== id));
   }
-
+/** <Route path="/favorites" element={<Favorites />} /> */
   return (
     <>
-      <Nav onSearch={onSearch} />
-      <hr />
-      <div className={style.centrarNav}>
-        <Routes>
-           
+      {(location.pathname !== '/') && <Nav onSearch={onSearch} LogOut={LogOut} />}
 
-          <Route path="/home" element={<Cards characters={characters} onClose={onClose} /> } />          
-          
-          <Route path="/about" element={<About />} />            
-         
-          <Route path="/detail/:detailId" element={<Detail />} />            
-          
-        </Routes>
-      </div>
+      <hr />
+
+      <Routes>
+        <Route path="/" element={<Logins login={login} />} />
+
+        <Route path="/home" element={<Cards characters={characters} onClose={onClose} />} />
+
+        <Route path="/about" element={<About />} />
+      
+
+        <Route path="/detail/:detailId" element={<Detail />} />
+
+        <Route path="*" element={<Error />} />
+      </Routes>
+      
     </>
   );
 }

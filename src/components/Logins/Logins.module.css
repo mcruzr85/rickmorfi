@@ -1,0 +1,8 @@
+.errorP{
+    color:red
+}
+
+.errorInput{
+    border: solid red 1px;
+    border-radius: 0.2em;
+}
