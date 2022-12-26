@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -7,8 +6,9 @@ import Cards from "./components/Cards/Cards.jsx";
 import About from "./components/About/About";
 import Error from "./components/Error/Error";
 import Detail from "./components/Detail/Detail";
-import style from "./App.module.css";
+import Favorites from "./components/Favorites/Favorites";
 import Logins from "./components/Logins/Logins";
+import "./App.module.css";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -20,12 +20,10 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  
-
-  /* useEffect(() => {
-    // Google Analytics
-   // ga('send', 'pageview');
-  }, [location]);*/
+  useEffect(() => {
+    (!access) && navigate("/");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [access]);
 
   function login(userData) {
     if (userData.user === username && userData.password === password) {
@@ -40,11 +38,6 @@ function App() {
     setAccess(false);
     navigate('/');
   }
-
-  useEffect(() => {
-    (access === false) && navigate("/");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [access, navigate]);
 
   function onSearch(character) {
     fetch(`https://rickandmortyapi.com/api/character/${character}`)
@@ -78,6 +71,8 @@ function App() {
       
 
         <Route path="/detail/:detailId" element={<Detail />} />
+
+        <Route path="/favorites" element={<Favorites />} />
 
         <Route path="*" element={<Error />} />
       </Routes>
