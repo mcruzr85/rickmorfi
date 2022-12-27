@@ -1,0 +1,32 @@
+
+.btnDetail{
+    margin-top: 1rem;
+  }
+
+@media (min-width: 600px) {
+    .cardBack{
+        background-color: darkgrey;
+        box-shadow: 1px 1px 20px -10px #20202049; 
+        height: 40%;
+        width: 450px;
+       
+        border-radius: 7rem;
+        display: flex;
+        margin: 0 auto;
+    }
+    
+    .container{
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+       padding-top: 5rem;
+       padding-bottom: 2rem;
+        line-height: 8%;
+        
+    }
+    .mainText{
+        background-color: rgb(127, 141, 141);
+        border-top-left-radius: 6rem;
+        border-top-right-radius: 6rem;
+    }
+  }
