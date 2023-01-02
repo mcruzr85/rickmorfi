@@ -23,9 +23,7 @@ const Logins = ({ login }) => {
       <div className={style.center}>
         <form className={style.formulario} onSubmit={handleSubmit}>
           
-            <legend>Welcome to our Rick and Morty App</legend>
-
-           
+            <legend>Welcome to our Rick and Morty App</legend>           
 
               <div className={style.campo}>
                 <label htmlFor="user">Name:</label>
@@ -60,16 +58,16 @@ const Logins = ({ login }) => {
               </div>
           
             <div className={style.btnContainer}>
-            <button className={style.btnLogin}>Login</button>
+            <button className={style.btnModerno}>Login</button>
             </div>
            
          
         </form>
       </div>
-
-      <div className={style.center}>
+{/** <div className={style.center}>
         <img className={style.imgStyle} src={imgLogin} alt="page not found" />
-      </div>
+      </div> */}
+     
     </div>
   );
 };
