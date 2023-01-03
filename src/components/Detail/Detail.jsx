@@ -35,8 +35,12 @@ const Detail = () => {
  
   return (
     <div className={style.cardBack}>
-      <div className={style.container}>
-          <h2 >Character details</h2>
+        <div className={style.container}>
+           <div className={style.aa}>
+             <h2 className={style.text}>Character details</h2> 
+             <button className={style.btn} onClick={handleClick}>Go Back</button>          
+         </div>
+
           <h2>{`Id: ${character.id}`}</h2>      
           <h2>{`Name: ${character.name}`}</h2>          
           <h2>{`Gender: ${character.gender}`}</h2>
@@ -44,7 +48,7 @@ const Detail = () => {
           <h2>{`Status: ${character.status}`}</h2>
           <h2>{`Origin: ${character.origin.name}`}</h2>
           <img  src={character.image} alt="una imagen"/>
-          <button className={style.btnDetail} onClick={handleClick}>Go Back</button>
+          
       </div>
     
     </div>
