@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { connect } from "react-redux";
+import { addUsername } from "../../redux/actions";
 import validate from "../Error/validation";
 import style from "./Logins.module.css";
 //import imgLogin from "../../img/2b.webp";
-import imgLogin from "../../img/rm.png";
+//import imgLogin from "../../img/rm.png";
 //className={`${style.center} ${style.fondo}`}
-const Logins = ({ login }) => {
+
+const Logins = ({ login, addUsername }) => {
   const [userData, setUserData] = useState({ user: "", password: "" });
   const [errors, setErrors] = useState({ user: "", password: "" });
 
@@ -17,7 +20,11 @@ const Logins = ({ login }) => {
     //ok
     e.preventDefault(); //me permite validar antes de pasar datos incorrectos al server
     login(userData);
+    addUsername(userData.user)
+    
   }
+
+
   return (
     <div className={style.mainContainer}>
       <div className={style.center}>
@@ -58,7 +65,7 @@ const Logins = ({ login }) => {
               </div>
           
             <div className={style.btnContainer}>
-            <button className={style.btnModerno}>Login</button>
+            <button className={style.btnLogin}>Login</button>
             </div>
            
          
@@ -72,4 +79,11 @@ const Logins = ({ login }) => {
   );
 };
 
-export default Logins;
+function mapDispatchToProps(dispatch){
+  return {
+    addUsername: function (userN) { //es un obj q autobindea los actionCreators con el metodo dispatch con la
+      dispatch(addUsername(userN)); //funcion ejecutada dentro
+    },
+  }
+}
+export default connect(null, mapDispatchToProps)(Logins);
