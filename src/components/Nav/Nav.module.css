@@ -2,8 +2,8 @@
   background-color: rgba( 73, 61, 57, 0.5); /*con rgba se le añade opacidad al color sin afectar los hijos del elemento*/
   border: 1px solid rgb(43, 199, 43);/*border: 1px solid rgb(163, 191, 253);--border: 1px solid rgb(72, 197, 13);*/
   border-radius: 50px;
-  padding: 1rem;
-  margin: 1.5rem auto 0.5rem auto;
+  padding:  1rem;
+  margin: 1rem auto;
   width: min(90%, 120rem);
 }
 
@@ -12,9 +12,9 @@
   font-weight: bold;
   text-decoration: none;
   text-decoration: underline;
-  font-size: 2.2rem;
-  
+  font-size: 2.2rem;  
 }
+
 .nonActiveStyle {
   color: #672cee;
   font-weight: bold;
@@ -25,16 +25,13 @@
 .display {
   display: block;
   text-align: center;
-  padding: 1rem 0;
- 
+  padding: .5rem 0; 
 }
 
 .btnLogout{
   display:block;
   width: 15rem;
-
   margin: 0 auto; 
-
   background-color:rgb(119, 54, 46); 
   border-radius: .5rem;
   border: 1px solid rgb(202, 45, 25);  
@@ -60,31 +57,72 @@
   border-bottom-right-radius: 30px; 
   width: 100%;  
   width: 10rem;  
+  margin-top: 1rem;
 }
 
 .btnLogout2:hover{
 cursor: pointer;
 box-shadow: 1px 1px 15px -4px #ffffffec;
-background-color: rgb(238, 80, 59);
- 
+background-color: rgb(238, 80, 59); 
+}
+
+.welcome{
+  color: rgb(43, 199, 43);
+  font-weight: 700;
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+.alinear{  
+ margin-right: 1rem;
 }
 
 @media (min-width: 600px) {
   .display {
     display: inline-block;
-    font-size: xx-large;
-    margin-left: 7rem;
+    padding: 1.5rem 0;
+    margin-left: 3rem;
   }
   .barra {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 2rem;
+    grid-template-columns: 2fr 1fr;
+    padding: 0 1rem;
     align-items: center;
   }
+  .search{ 
+    grid-column-start: 1;
+    grid-column-end: 3;    
+  }   
 }
 
-@media (min-width: 1000px) { 
-  .barra {    
-    grid-template-columns: 1fr 1fr;   
+@media (min-width: 766px) { 
+  .activeStyle {
+    font-size: 2.5rem;    
+  }
+  .nonActiveStyle {
+    font-size: 2.5rem;    
+  }
+  .welcome{
+    font-size: 2.3rem;
+  }
+  .search{ 
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }  
+}
+
+@media (min-width: 1024px) { 
+  .display {   
+    margin-left: 4rem;
+  }
+  .activeStyle {
+    font-size: 3rem;    
+  }
+  .nonActiveStyle {
+    font-size: 3rem;    
+  }  
+   .search{ 
+    grid-column-start: 2;
+    grid-column-end: 3;
   }
 }

@@ -17,8 +17,9 @@ const Nav = ({ onSearch, logOut, username, removeUsername }) => {
 
   return (
     <div className={style.barra}>
-      <nav>
-        <div className={style.display}>
+      <div>
+        <nav>
+         <div className={style.display}>
           <NavLink
             to="/home"
             className={({ isActive }) =>
@@ -27,9 +28,9 @@ const Nav = ({ onSearch, logOut, username, removeUsername }) => {
           >
             HOME
           </NavLink>
-        </div>
+         </div>
 
-        <div className={style.display}>
+         <div className={style.display}>
           <NavLink
             to="/about"
             className={({ isActive }) =>
@@ -38,6 +39,8 @@ const Nav = ({ onSearch, logOut, username, removeUsername }) => {
           >
             ABOUT
           </NavLink>
+          </div>
+          
           <div className={style.display}>
             <NavLink
               to="/favorites"
@@ -48,17 +51,19 @@ const Nav = ({ onSearch, logOut, username, removeUsername }) => {
               FAVORITES
             </NavLink>
           </div>
-        </div>
+        
       </nav>
+      </div>
 
-      <div className={style.display}>
-        <label>{`Welcome ${username} `}</label>
+
+      <div className={`${style.display} ${style.alinear}`}>
+        <label className={style.welcome}>{`Welcome ${username.split('@')[0]} `}</label>
         <button className={style.btnLogout2} onClick={handleLogout}>
           Log Out
         </button>
       </div>
       
-      <div>
+      <div className={style.search}>
         <SearchBar onSearch={onSearch} />
       </div>
     </div>

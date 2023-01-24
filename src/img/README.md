@@ -1,8 +1,8 @@
-# HW 09 - React-Routing | Integración
+## HW 12: React-Redux | Integración
 
 ## **Duración estimada 🕒**
 
-50 minutos
+x minutos
 
 <br />
 
@@ -10,168 +10,160 @@
 
 ## **Rick & Morty App**
 
-### **INTRO**
+## **INTRO**
 
-Continuamos con nuestra Rick & Morty App. Utilizaremos React-Router-DOM el cual nos va a permitir enrutar nuestra SPA. Esto quiere decir que podremos decidir en que path o "link" se renderice cada componente.
+En la integración de hoy crearemos un espacio en el que podremos guardar a nuestros personajes favoritos. ¡Podremos agregarlos y eliminarlos!
 
-Al finalizar, habremos creado tres rutas por las que podremos navegar:
+Para esto:
 
--  **"/home"**: esta será la ruta del Home (vista principal/general).
--  **"/detail/:detailId"**: en esta ruta encontraremos información más detallada sobre el personaje en particular.
--  **"/about"**: en esta ruta colocarás tu nombre y describirás de qué trata la aplicación Rick & Morty.
-
-<br />
-
----
-
-## **COMENCEMOS**
-
-Vamos a comenzar creando los componentes que nos faltan en nuestra carpeta components. Creamos `About.jsx` y `Detail.jsx` con sus respectivos archivos. Sólo los crearemos, aún no los construiremos. También creamos el archivo `.css` para el estilado. Recuerda que puedes utilizar cualquier formato de estilos (in-line, module, styled components, etc)
-
-Cómo sabemos, `react-router-dom` nos da la posibilidad de crear rutas dinámicas. Estas rutas serán los path o links en el que se renderizará el componente que nosotros decidamos. Para este ejercicio queremos que en cada link se vea lo siguiente:
-
--  `<Nav />` debe que aparecer en todas las rutas.
--  `<Cards />` debe aparecer sólo en la ruta `/home`.
--  `<About />` debe aparecer sólo en la ruta `/about`.
--  `<Detail />` debe aparecer sólo en la ruta `/detail/:detailId`
+-  ❤️ Fav button: nuestras Cards tendrán un botón para agregar/eliminar de favoritos.
+-  👀 Vista nueva: crearemos una nueva vista en la que se muestre específicamente todos nuestros personajes favoritos.
 
 <br />
 
 ---
 
-### **👩‍💻 EJERCICIO 1**
+### **COMENCEMOS**
 
-### **Instalar y configurar `react-router-dom`**
+Para comenzar, en tu terminal dirígete a la carpeta raíz de tu proyecto. Allí tendrás que instalar las siguientes dependencias:
 
-Instala `react-router-dom` desde la terminal. Importa y envuelve la aplicación con "**BrowserRouter**" en el archivo index.js.
-
-Importa los elementos "**Routes**" y "**Route**", para que luego definamos las rutas en el archivo app.js.
-
-<br />
-
----
-
-### **👩‍💻 EJERCICIO 2**
-
-### **Mi perfil**
-
-Ahora si construiremos el componente `<About />`. Este componente será una vista que contenga tu información y una explicación acerca de la aplicación!
-
-Esto significa que es completamente libre. Puedes mostrar incluso una foto tuya. Esto le servirá a las personas que vean tu App para conocer al creador 🤠✨.
-
-En la Navbar agrega el link About que dirija al componente **About** y el link Home para que dirija al componente **Home**.
-
-<br />
-
----
-
-### **👩‍💻 EJERCICIO 3**
-
-### **Routing time!**
-
-En nuestro archivo "app.js" (aplicación), crea las rutas necesarias para que los componentes `<About />`, `<Cards />` y `<Nav />` se rendericen en sus links correspondientes. Recuerda que en el **EJERCICIO 1** ya están especificadas las rutas.
-
-Respecto al componente `<Detail />`, su ruta recibirá el parámetro **detailId**, por lo que debes asegurarte de escribir bien el path de esta ruta.
-
-> **Nota:** Comprueba en tu navegador que los links rendericen el componente correcto, y que el componente `<Nav />` se vea siempre.
-
-<br />
-
----
-
-### **👩‍💻 EJERCICIO 4**
-
-### **Detail redirection**
-
-Ahora nuestra SPA cuenta con tres rutas distintas: "`/home`", "`/detail/:detailId`" y "`/about`".
-
-Para este ejercicio:
-
-1. En el componente `<Card />` importa y envuelve el nombre del personaje con el elemento "**Link**". Tiene que redirigirnos a la ruta de cada personaje.
-2. A este componente deberás pasarle por **props** el "**detailId**" del personaje para usarlo en el Link.
-
-```js
-// Card.js
-...
-<Link to={`/detail/${detailId}`} >
-  <h5 className="card-title">{name}</h5>
-</Link>
-...
+```bash
+npm i redux react-redux redux-thunk
 ```
 
+Una vez instaladas, a la altura de la carpeta "_components_" (es decir, que sea una carpeta hermana), crea una nueva carpeta llamada "**redux**". Dentro de ella crea los archivos `actions.js`, `store.js` y `reducer.js`.
+
+Dentro del archivo `store.js`, haz la configuración del store. Una vez configurado, deberás importarlo en tu archivo `index.js` junto con el Provider, y configurarlo en el wraper finalmente.
+
+> **NOTA:** puedes guiarte por cómo lo tienes hecho en la homework anterior. Ten en cuenta que el reducer lo crearás en el siguiente paso.
+
 <br />
 
 ---
 
-### **👩‍💻 EJERCICIO 5**
+## **👩‍💻 EJERCICIO 1**
 
-### **Construcción del Detail**
+### **REDUCER**
 
-¡Genial! Cuando hacemos click sobre el nombre en una Card esta nos redirige a la ruta con el ID del personaje. Ahora necesitamos crear el componente que mostrará toda la información del personaje.
+Dirígete al archivo en el que se encuentra tu **reducer**. Allí deberás:
 
-Para obtener esta información importa los hooks **useState** de `react` y **useParams** de `react-router-dom` en el componente `<Detail />`.
+1. Crear un _**initialState**_ con una propiedad llamada "**myFavorites**". Esta propiedad será un array vacío.
 
-1. Primero obten el ID del personaje mediante **useParams**.
+2. Luego deberás crear tu reducer. Recuerda que este recibe dos parámetros, y dentro de él hay un switch.
 
-2. Crea un estado local con el nombre **character**.
+> **NOTA:** ten en cuenta el modo en el que lo exportas, y cómo lo importas dentro de tu store.
 
-3. En este paso importaremos el hook **useEffect** de `react`. Una vez importado, copia el siguiente código y pégalo en el cuerpo del componente.
+3. Dentro del switch de tu reducer, crea un nuevo caso en el que podrás agregar el personaje que recibes por payload a tu estado "_myFavorites_".
 
-```js
+4. Crea un nuevo caso en el elimines el personaje que recibes por payload de tu estado inicial. Deberás filtrar el personaje a partir de su **ID**.
+
+5. No te olvides de tu caso _**default**_.
+
+<br />
+
+---
+
+## **👩‍💻 EJERCICIO 2**
+
+### **ACTIONS**
+
+Crea dos _actions-creators_.
+
+-  Una que sea para agregar personajes a tu lista de favoritos. Recibe por parámetro el personaje.
+
+-  Otro que sea para eliminar un personaje de la lista de favoritos. Recibe por parámetro el id del personaje.
+
+> **NOTA:** no olvides que el nombre que asignes en la propiedad "TYPE" de tu acción, debe coincidir exactamente con el nombre de los casos que hayas asignado en tu reducer.
+
+<br />
+
+---
+
+## **👩‍💻 EJERCICIO 3**
+
+### **FAV BUTTON**
+
+Ahora crearemos un botón para agregar y eliminar de favoritos! Para esto:
+
+1. Dirígete al componente `Card`. Aquí deberás crear una función **mapDispatchToProps** que contenga dos funciones: Una para agregar tu personaje favorito, y otra para eliminarlo. Ten en cuenta que deberás importar las _**actions**_ que ya creaste.
+
+2. Luego conecta esta función con tu componente, y recibe ambas funciones despachadoras por props.
+
+3. Ahora crea un estado local en tu componente que se llame **isFav**, e inicialízalo en `false`.
+
+4. Crea una función en el cuerpo del componente llamada **handleFavorite**. Esta función estará dividida en dos partes:
+
+   -  Si el estado _**isFav**_ es `true`, entonces settea ese estado en false, y despacha la función **deleteFavorite** que recibiste por props pasándole el **ID** del personaje como argumento.
+   -  Si el estado _**isFav**_ es `false`, entonces settea ese estado en true, y despacha la función **addFavorite** que recibiste por props, pasándole `props` como argumento.
+
+5. Ahora te ayudaremos a crear un renderizado condicional. Si tu estado local `isFav` es true, entonces se mostrará un botón. Si es false, se mostrará otro botón. Para esto, copia y pega el siguiente código al comienzo del renderizado de tu componente (no te olvides de darle estilos).
+
+```javascript
+{
+   isFav ? (
+      <button onClick={handleFavorite}>❤️</button>
+   ) : (
+      <button onClick={handleFavorite}>🤍</button>
+   );
+}
+```
+
+En este punto debería quedarte algo como esto:
+
+<img src="./img/favButton.gif" alt="" />
+
+6. Una vez hecho esto, nos tenemos que asegurar que el status de nuestro estado local se mantenga aunque nos vayamos y volvamos al componente. Para esto vamos a agregar en este componete una función **mapStateToProps**. Esa función debe traer nuestro estado global **myFavorites**. Recíbelo por `props` dentro de tu componente.
+
+7. Este `useEffect` comprobará si el personaje que contiene esta `Card` ya está dentro de tus favoritos. En ese caso setteará el estado **isFav** en true. Cópialo y pégalo dentro de tu componente (no te olvides de importarlo).
+
+```javascript
 useEffect(() => {
-   fetch(`https://rickandmortyapi.com/api/character/${id}`)
-      .then((response) => response.json())
-      .then((char) => {
-         if (char.name) {
-            setCharacter(char);
-         } else {
-            window.alert('No hay personajes con ese ID');
-         }
-      })
-      .catch((err) => {
-         window.alert('No hay personajes con ese ID');
-      });
-   return setCharacter({});
-}, [id]);
+   myFavorites.forEach((fav) => {
+      if (fav.id === props.id) {
+         setIsFav(true);
+      }
+   });
+}, [myFavorites]);
 ```
 
-> **NOTA:** Este código es el que buscará al personaje de la API cada vez que el componente se monte. Y luego, cada vez que se desmonte, borrará su información.
+> **DESAFÍO:** te desafiamos a que reconstruyas ese useEffect, pero utilizando un **bucle For** en lugar de un **.forEach()**.
 
 <br />
 
 ---
 
-### **👩‍💻 EJERCICIO 6**
+## **👩‍💻 EJERCICIO 4**
 
-Ahora en tu estado local **character** tendrás toda la información del personaje disponible para que la renderices en este componente (`<Detail />`). Debes traer la siguiente información:
+### **COMPONENTE DE FAVORITOS**
 
--  Name
--  Status
--  Specie
--  Genrer
--  Origin
--  Image
+Dirígete a tu carpeta de componentes, y crea allí dentro una carpeta que contenga un archivo `Favorites.jsx` y otro `favorites.css`.
 
-Dándole estilos debería quedarte algo similar a esto:
+1. Crea una ruta en el archivo `App.js` para mostrar este componente. La ruta se puede llamar **/favorites**. También crea un botón en tu `Navbar` que te redirija a esta ruta, y otro que te devuelva a tu `Home`.
 
-<img src="./img/final_detail.png" width='800px'/>
+2. Dentro de este componente crea una función **mapStateToProps**. Esta función debe traer nuestro estado global _**myFavorites**_ a este componente. Luego recíbelo por props.
 
-<br />
+3. Una vez que tengas la lista de tus personajes favoritos dentro de tu componente, deberás mappearlo (recorrerlo) y re-renderizar un `<div>` con información del personaje.
 
----
-
-### **👩‍💻 EJERCICIO 7**
-
-Crea un botón en el componente `<Detail />` que te permita regresar a "`/home`".
+> **NOTA:** no te olvides de darle estilos al componente.
 
 <br />
 
 ---
 
-### **📌 EXTRA CREDIT**
+### **¡LISTO! YA FUNCIONA TODO**
 
-Ahora te desafiamos a que crees un nuevo componente llamado **Error**. A este componente le podrás dar los estilos que quieras, pero la idea es que se muestre un mensaje de error 404.
+Todo el trabajo que hiciste en esta integración debería darte un resultado y funcionamiento similar a este:
 
-Pueden inspirarte en el siguiente link: "https://github.com/errroorrxd".
+<img src="./img/favDemostration.gif" alt="" />
 
-El desafío es el siguiente: haz que este componente se muestre cada vez que el usuario ingrese a cualquier otra ruta que no exista. Es decir que no la hayas especificado en esta homework. Por ejemplo, si creaste una ruta "`/home`" y "`/about`", y el usuario en el navegador escribe y "`/henry`", debería mostrar el error 404.
+<br />
+
+---
+
+## **📌 EJERCICIO EXTRA**
+
+### **¡Ahora te proponemos dos desafíos!**
+
+**1.** Si revisas, esta aplicación tiene un pequeño bug que tendrás que resolver... Cuando presionas el ❤️ de una de las Cards, el personaje aparece en la vista de "**Favoritos**". Pero si luego eliminas el personaje, este aún permanece en esta vista. Busca la manera para que cuando elimines un personaje, también se elimine de "**Favoritos**" (si es que está allí).
+
+**2.** Te animamos a que crees, dentro de esta misma aplicación, una nueva vista que sea tu "**PORTFOLIO**". Aquí podrás agregar/eliminar/editar tus proyectos construidos durante el bootcamp en Henry!

@@ -21,44 +21,56 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    (!access) && navigate("/");
+    (!access) && navigate("/"); //si acces esta en false o sea no ha hecho login, redirecciona a la pag de login que es 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [access]);
 
   function login(userData) {
     if (userData.user === username && userData.password === password) {
       setAccess(true);
-      navigate("/home");
+      navigate("/home");  
     } else {
       return window.alert("Incorrect username or password");
     }
   }
 
-  function LogOut() {
+  function logOut() {
     setAccess(false);
-    navigate('/');
+    navigate('/');    
+  }
+
+  function validateNonRepeat(id,arrayCharacters){
+    return arrayCharacters.some(x => x.id === id);
+
   }
 
   function onSearch(character) {
-    fetch(`https://rickandmortyapi.com/api/character/${character}`)
+   // if(validateNonRepeat(character, characters)){
+      fetch(`https://rickandmortyapi.com/api/character/${character}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.id) {
-          setCharacters((characters) => [...characters, data]);
+          setCharacters((characters) => [...characters, data]);   
+          navigate("/home");      
         } else {
           window.alert("Invalid ID");
         }
       });
-    navigate("/home");
+   
+
+   // }else{
+    //  window.alert("That character is already displayed")
+  //  }
+     
   }
 
   function onClose(id) {
     setCharacters(characters.filter((ch) => ch.id !== id));
   }
-/** <Route path="/favorites" element={<Favorites />} /> */
+
   return (
-    <>
-      {(location.pathname !== '/') && <Nav onSearch={onSearch} LogOut={LogOut} />}
+    <div >
+      {(location.pathname !== '/') && <Nav onSearch={onSearch} logOut={logOut}/>}
 
       <hr />
 
@@ -67,8 +79,7 @@ function App() {
 
         <Route path="/home" element={<Cards characters={characters} onClose={onClose} />} />
 
-        <Route path="/about" element={<About />} />
-      
+        <Route path="/about" element={<About />} />      
 
         <Route path="/detail/:detailId" element={<Detail />} />
 
@@ -77,7 +88,7 @@ function App() {
         <Route path="*" element={<Error />} />
       </Routes>
       
-    </>
+    </div>
   );
 }
 

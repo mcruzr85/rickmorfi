@@ -50,11 +50,11 @@ export function Card(props) {
           <Link className={style.link} to={`/detail/${id}`}>
             <h2>{`- ${id} -`}</h2>
           </Link>
-          {(name.length < 21) && <h2>{`Name: ${name}`}</h2>}
-          {(name.length >= 21) && <div><h2>{`Name:`}</h2> <h2>{`${name}`}</h2></div>}  
+          {(name.length < 30) && <h2>{`Name: ${name}`}</h2>}
+          {(name.length >= 30) && <div><h2>{`Name:`}</h2> <h2>{`${name}`}</h2></div>}  
           <h2>{`Gender: ${gender}`}</h2>
-          {(species.length < 21) && <h2>{`Species: ${species}`}</h2>}
-          {(species.length >= 21) && <div><h2>{`Species:`}</h2> <h2>{`${species}`}</h2></div>}
+          {(species.length < 30) && <h2>{`Species: ${species}`}</h2>}
+          {(species.length >= 30) && <div><h2>{`Species:`}</h2> <h2>{`${species}`}</h2></div>}
           <button onClick={() => onClose(id)}> X </button>
           {favorite ? (
             <button onClick={handleFavorite}>❤️</button>

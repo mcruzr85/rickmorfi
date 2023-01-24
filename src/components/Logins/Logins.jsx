@@ -20,7 +20,11 @@ const Logins = ({ login, addUsername }) => {
     //ok
     e.preventDefault(); //me permite validar antes de pasar datos incorrectos al server
     login(userData);
-    addUsername(userData.user)
+    if(userData.user!==""){
+      console.log("username diferente de vacio")
+      addUsername(userData.user)
+    }
+    
     
   }
 

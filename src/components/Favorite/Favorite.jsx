@@ -17,11 +17,11 @@ const Favorite = ({ id, name, image, species, gender }) => {
         <h2>❤️</h2>      
           </div>
        
-        {(name.length < 21) && <h2>{`Name: ${name}`}</h2>}
-        {(name.length >= 21) && <div><h2>{`Name:`}</h2> <h2>{`${name}`}</h2></div>}
+        {(name.length < 30) && <h2>{`Name: ${name}`}</h2>}
+        {(name.length >= 30) && <div><h2>{`Name:`}</h2> <h2>{`${name}`}</h2></div>}
         <h2>{`Gender: ${gender}`}</h2>
-        {(species.length < 21) && <h2>{`Species: ${species}`}</h2>}
-        {(species.length >= 21) && <div><h2>{`Species:`}</h2> <h2>{`${species}`}</h2></div>}
+        {(species.length < 30) && <h2>{`Species: ${species}`}</h2>}
+        {(species.length >= 30) && <div><h2>{`Species:`}</h2> <h2>{`${species}`}</h2></div>}
       </div>
     </div>
   );
