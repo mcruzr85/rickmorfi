@@ -1,0 +1,39 @@
+
+.container {
+    background: rgba(73, 61, 57, 0.8);
+    box-shadow: 1px 1px 20px -10px #20202049;
+    border-radius: 20px;
+  
+    height: 40%;
+   
+   
+    padding:  2rem;  
+  
+  
+  
+    color: white;
+   
+    font-size: small;  
+
+    
+    margin: 1rem auto;
+    width: min(90%, 80rem);
+    color: white;
+    font-size: 20px;
+  }
+
+.photoContainer {
+  width: 25rem;
+  height: 25rem;
+  margin: 0 auto 1rem auto;
+}
+
+.photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50rem;
+  }
+
+.noMargin{
+    margin:0 ;
+}
