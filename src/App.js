@@ -8,7 +8,9 @@ import Error from "./components/Error/Error";
 import Detail from "./components/Detail/Detail";
 import Favorites from "./components/Favorites/Favorites";
 import Logins from "./components/Logins/Logins";
+import Footer from "./components/Footer/Footer";
 import "./App.module.css";
+
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -87,6 +89,10 @@ function App() {
 
         <Route path="*" element={<Error />} />
       </Routes>
+
+     
+      {(location.pathname !== '/') && <Footer />}
+
       
     </div>
   );
