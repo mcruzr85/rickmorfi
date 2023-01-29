@@ -22,6 +22,11 @@
 .inputType {     
   height: 4rem;   
   padding-left: 3rem;
+  outline: none;
+}
+
+.inputType:hover {     
+  border: 1px solid #672cee;;
 }
 
 .btnModerno{
@@ -32,7 +37,7 @@
   cursor: pointer;
   border-left: 10px solid rgb(43, 199, 43); 
 }
-.btnModerno:hover{
+.btnModerno:hover{  
   border-left: 10px solid #672cee;
   box-shadow: 1px 1px 15px -4px #ffffffec;  
 }

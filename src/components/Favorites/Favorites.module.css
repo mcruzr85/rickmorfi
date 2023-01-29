@@ -1,9 +1,9 @@
 .cardsContainer {
   width: min(90%, 120rem);
-  margin: 0 auto;
+  margin: 3rem auto;
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: 3rem;
+  row-gap: 4rem;
 
   /* align-items: center;
     justify-content: space-around;
@@ -15,16 +15,13 @@
   .cardsContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 2rem;
-    row-gap: 7rem;
+    column-gap: 2rem;   
   }
 }
 
 @media (min-width: 1200px) {
   .cardsContainer {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 2rem;
-    row-gap: 7rem;
+    grid-template-columns: 1fr 1fr 1fr;  
   }
 }

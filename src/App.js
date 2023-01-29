@@ -9,6 +9,7 @@ import Detail from "./components/Detail/Detail";
 import Favorites from "./components/Favorites/Favorites";
 import Logins from "./components/Logins/Logins";
 import Footer from "./components/Footer/Footer";
+import Nada from "./components/Nada/Nada";
 import "./App.module.css";
 
 
@@ -85,7 +86,7 @@ function App() {
 
         <Route path="/detail/:detailId" element={<Detail />} />
 
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/favorites" element={<Favorites />} />       
 
         <Route path="*" element={<Error />} />
       </Routes>

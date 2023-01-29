@@ -1,12 +1,12 @@
 import Card from "../Card/Card";
 import style from "./Cards.module.css";
+import Nada from "../Nada/Nada";
 
-export default function Cards(props) {
-  const { characters, onClose } = props;
+export default function Cards({ characters, onClose } ) {
 
   return (
     <div className={style.cardsContainer}>
-      {characters.map((ch) => (
+      {characters && characters.map((ch) => (
         <Card
           key={ch.id}
           id={ch.id}
@@ -17,6 +17,8 @@ export default function Cards(props) {
           onClose={onClose}
         />
       ))}
+
+      {characters.length === 0 && <Nada />}
     </div>
   );
 }

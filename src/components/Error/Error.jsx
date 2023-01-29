@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import imagen from "../../img/error1.jpg";
+import style from "./Error.module.css";
 
 const Error = () => {
     const navigate = useNavigate();
@@ -9,7 +10,7 @@ const Error = () => {
       <h1>Page not Found</h1>
       <button onClick={() => navigate(-1)}>Go back</button>
       <hr />
-      <img   src={imagen} alt="page not found" />
+      <img  className={style.imgStyle} src={imagen} alt="page not found" />
       
       <hr />
     </div>

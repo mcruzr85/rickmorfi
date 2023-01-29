@@ -58,7 +58,7 @@ const Nav = ({ onSearch, logOut, username, removeUsername }) => {
 
       <div className={`${style.display} ${style.alinear}`}>
         <label className={style.welcome}>{`Welcome ${username.split('@')[0]} `}</label>
-        <button className={style.btnLogout2} onClick={handleLogout}>
+        <button className={style.btnLogout} onClick={handleLogout}>
           Log Out
         </button>
       </div>

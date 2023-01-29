@@ -4,5 +4,6 @@
   bottom: 0;
   /* Ocupar todo el ancho disponible */
   width: 100%;
+  margin-top: 2rem;
   /*min-height: 10vh; */
 }

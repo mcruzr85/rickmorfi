@@ -7,10 +7,7 @@ function Favorites({ myFavorites }) {
 
   return (
     <div  className={style.cardsContainer}>
-      {myFavorites?.map((f) => {
-        
-        console.log(f)
-        
+      {myFavorites?.map((f) => {        
        return (        
           <Favorite key={f.id} id={f.id} name={f.name} image={f.image} species={f.species}
           gender={f.gender} />
