@@ -11,6 +11,7 @@ import Logins from "./components/Logins/Logins";
 import Footer from "./components/Footer/Footer";
 import Nada from "./components/Nada/Nada";
 import "./App.module.css";
+import validate from "./components/Error/validation";
 
 
 function App() {
@@ -42,29 +43,23 @@ function App() {
     navigate('/');    
   }
 
-  function validateNonRepeat(id,arrayCharacters){
-    return arrayCharacters.some(x => x.id === id);
-
+  function validateNonRepeat(id){
+    return( characters.some(x => x.id === id));
   }
 
   function onSearch(character) {
-   // if(validateNonRepeat(character, characters)){
+    if(validateNonRepeat(character)){
+      window.alert("That character is already displayed")
+    }else{
       fetch(`https://rickandmortyapi.com/api/character/${character}`)
       .then((response) => response.json())
       .then((data) => {
-        if (data.id) {
-          setCharacters((characters) => [...characters, data]);   
-          navigate("/home");      
-        } else {
-          window.alert("Invalid ID");
-        }
-      });
-   
-
-   // }else{
-    //  window.alert("That character is already displayed")
-  //  }
-     
+           if (data.id) {
+             setCharacters((characters) => [...characters, data]);   
+             navigate("/home");
+           }    
+         })
+       }
   }
 
   function onClose(id) {
@@ -80,7 +75,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Logins login={login} />} />
 
-        <Route path="/home" element={<Cards characters={characters} onClose={onClose} />} />
+        <Route path="/home" element={<Cards characters={characters} onClose={onClose}/>} />
 
         <Route path="/about" element={<About />} />      
 

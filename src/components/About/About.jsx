@@ -13,9 +13,9 @@ const About = () => {
 
       <p className={style.noMargin}>
       Hello!! My name is Meybis, I studied informatic enginering in Cuba  
-      15 years ago. Today I´m studying in the bootcamp "Soy Henry" in the
-       career Full Stack developer because I was needing an update. I´m back!! 
-       Every day I study and practice to achieve my goal to became the programmer
+      15 years ago. I´m actually studying in the bootcamp "Soy Henry" in the
+       Full Stack developer career because I was needing an update. I´m back!! 
+       Every day I study and practice to achieve my goal to become the programmer
         I always dream to be.
       </p>
     </div>
